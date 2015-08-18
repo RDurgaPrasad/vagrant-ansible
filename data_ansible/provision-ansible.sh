@@ -6,5 +6,5 @@ sudo apt-get -y install ansible
 chmod 600 /home/vagrant/.ssh/id_rsa
 
 # add subject host to known_hosts (IP is defined in Vagrantfile)
-ssh-keyscan -H 10.1.1.1 >> /home/vagrant/.ssh/known_hosts
+ssh-keyscan -H 192.168.20.0 >> /home/vagrant/.ssh/known_hosts
 chown vagrant:vagrant /home/vagrant/.ssh/known_hosts

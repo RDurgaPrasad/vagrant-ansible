@@ -4,6 +4,35 @@ This project is a small setup for testing Ansible locally using Vagrant. The Vag
 
 # Usage
 
-The setup was created in Windows 7. Clone the project to your local drive and change the username {{username}} to your correct username.
+The setup was created in Windows 7. Clone the project to your local drive and just
 
-If you have [putty](http://www.putty.org/) on your PATH you can use the Launch-Vagrant-Ansible-Putty.cmd file. It will launch putty for the Ansible server when Vagrant is up and running.
+```shellscript
+vagrant up
+```
+
+And when both servers are running you can
+
+```shellscript
+putty -ssh -pw vagrant vagrant@192.168.10.0
+```
+
+in order to putty access your newly up'ed Vagrant box. The provisioning script should have taken care of installing Ansible on the machine. You can check is everything is working by trying
+
+```shellscript
+ansible -v
+```
+
+If you have [putty](http://www.putty.org/) on your PATH you can also just use the Launch-Vagrant-Ansible-Putty.cmd file. It will 'up' the servers and launch Putty automatically when both servers are up'ed.
+
+When inside the Ansible server you can start playing around with Ansible. Try the following:
+
+```shellscript
+vagrant@ansible:~$ cd books
+vagrant@ansible:~/books$ ansible all -m ping
+192.168.20.0 | success >> {
+    "changed": false,
+    "ping": "pong"
+}
+
+vagrant@ansible:~/books$
+```
