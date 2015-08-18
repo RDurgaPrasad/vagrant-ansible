@@ -1,0 +1,10 @@
+---
+- hosts: appservers
+
+  vars:
+    message: "Hello World"  
+
+  tasks:
+
+  - name: echo something at the server
+    shell: echo "FooBarbaz {{message}}"
